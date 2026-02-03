@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Panel | TodoApp</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SAME SIDEBAR AS INDEX -->
+    <aside class="sidebar">
+        <div class="user">
+            <img src="/static/user.avif" class="image">
+            <h2 id="username">Admin</h2>
+            <p id="useremail"></p>
+            <span class="badge admin">ADMIN</span>
+
+            <button class="logout" onclick="logout()">Logout</button>
+        </div>
+
+        <nav>
+            <button onclick="showStats()">📊 Dashboard</button>
+            <button onclick="loadUsers()">👥 Users</button>
+            <button onclick="loadAdminTasks()">📋 Tasks</button>
+            <a href="/">⬅ Back to App</a>
+        </nav>
+
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+        <header class="top">
+            <h1 id="adminTitle">Admin Dashboard</h1>
+        </header>
+
+        <section id="adminData" class="admin-grid"></section>
+        <div class="admin-filters">
+            <input id="searchInput" placeholder="Search by email">
+
+            <select id="taskFilter">
+                <option value="all">All Tasks</option>
+                <option value="completed">Completed Tasks</option>
+                <option value="shared">Shared Tasks</option>
+            </select>
+
+            <button onclick="loadAdminTasks()">Apply</button>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="/static/admin.js"></script>
+</body>
+</html>

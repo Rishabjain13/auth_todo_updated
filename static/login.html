@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login | TodoApp</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-card">
+    <h1>TodoApp</h1>
+    <p class="auth-subtitle">Welcome back 👋</p>
+
+    <form id="loginForm">
+        <div class="field">
+            <label>Email</label>
+            <input id="email" type="email" required>
+        </div>
+
+        <div class="field">
+            <label>Password</label>
+            <input id="password" type="password" required>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="auth-footer">
+        Don’t have an account?
+        <a href="/register">Create one</a>
+    </p>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            email: email.value.trim(),
+            password: password.value.trim()
+        })
+    });
+
+    if (!res.ok) {
+        alert("Invalid credentials");
+        return;
+    }
+
+    const data = await res.json();
+    sessionStorage.setItem("access_token", data.access_token);
+    window.location.href = "/";
+});
+</script>
+
+</body>
+</html>
