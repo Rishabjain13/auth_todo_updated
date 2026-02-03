@@ -24,7 +24,7 @@ def get_current_user(
     if payload.get("type") != "access":
         raise HTTPException(
             status_code=401,
-            detail="Invalid access token"
+            detail="Invalid token type"
         )
 
     return payload
@@ -58,5 +58,6 @@ def get_task_permission(
 
     if not share:
         raise HTTPException(403, "No access to this task")
+
 
     return share.permission
