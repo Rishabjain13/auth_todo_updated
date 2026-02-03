@@ -10,7 +10,6 @@ from app.routes.todo_routes import router as todo_router
 from app.routes.admin_routes import router as admin_router
 from app.routes.health import router as health_router
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Auth Todo API",
     description="Authentication-based Todo application with RBAC and sharing",
@@ -46,3 +45,4 @@ app.include_router(health_router)
 # admin = db.query(User).filter(User.email == "admin@email.com").first()
 # admin.role = "admin"
 # db.commit()
+
